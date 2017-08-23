@@ -4,11 +4,15 @@ RUN apk update --no-cache \
     && apk add --no-cache --virtual .build-deps \
         build-base \
     && apk add --no-cache git openssh \
+    # && gem update --system \
+    # && gem update \
     && gem install \
         jekyll \
         jekyll-paginate \
         sinatra \
         thin \
+    && gem clean \
+    && jekyll -v \
     && apk del -f .build-deps
 
 

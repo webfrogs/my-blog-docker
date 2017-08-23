@@ -3,7 +3,7 @@ require 'sinatra'
 set :bind, '0.0.0.0'
 set :port, 80 
 
-get '/' do
+post '/' do
     gitPath = "/opt/blog/checkout"
     repoURL = "git@bitbucket.org:nswebfrog/myblog.git"
     if File.directory?(gitPath)
