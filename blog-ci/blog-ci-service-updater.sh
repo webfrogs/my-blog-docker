@@ -23,13 +23,13 @@ hasRunningDockerContainer() {
 
 ContainerName="blogCI"
 
-if $(hasRunningDockerContainer "${ContainerName}"); then {
+if $(hasRunningDockerContainer "${ContainerName}"); then 
     docker stop ${ContainerName} && docker rm ${ContainerName}
-}
+fi
 
-if $(hasExitedDockerContainer "${ContainerName}"); then {
+if $(hasExitedDockerContainer "${ContainerName}"); then 
     docker rm ${ContainerName} 
-}
+fi
 
 docker run --restart=always -d --name ${ContainerName} \
     -p 127.0.0.1:8889:80 \
