@@ -12,7 +12,7 @@ import (
 const (
 	blogSitesFolderPath = "/opt/blog/sites"
 	blogGitCheckoutPath = "/opt/blog/checkout"
-	repoURL             = "git@bitbucket.org:nswebfrog/myblog.git"
+	repoURL             = "git@github.com:webfrogs/blog.git"
 )
 
 func main() {
@@ -38,7 +38,8 @@ func hookHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	} else {
-		fetchShell := "cd " + blogGitCheckoutPath + " && git fetch origin master && git reset --hard origin/master"
+		fetchShell := "cd " + blogGitCheckoutPath +
+			" && git fetch origin master && git reset --hard origin/master"
 		err := runShell(fetchShell)
 		if err != nil {
 			fmt.Println(err)
@@ -55,7 +56,8 @@ func hookHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	replaceSiteContentShell := "cd " + blogSitesFolderPath + " && rm -rf * && cp -r " + blogGitCheckoutPath + "/_site/* ."
+	replaceSiteContentShell := "cd " + blogSitesFolderPath +
+		" && rm -rf * && cp -r " + blogGitCheckoutPath + "/_site/* ."
 	err = runShell(replaceSiteContentShell)
 	if err != nil {
 		fmt.Println(err)
