@@ -17,8 +17,13 @@ const (
 
 func main() {
 	http.HandleFunc("/", hookHandler)
+	http.HandleFunc("/health", healthHandler)
 	fmt.Println("Hook is working.")
 	log.Fatal(http.ListenAndServe(":80", nil))
+}
+
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
 }
 
 func hookHandler(w http.ResponseWriter, r *http.Request) {

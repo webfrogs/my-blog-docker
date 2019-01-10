@@ -9,4 +9,4 @@ fi
 
 CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o build/hook hook.go
 
-docker build -t nswebfrog/blog-ci .
+docker build -t nswebfrog/blog_ci .
