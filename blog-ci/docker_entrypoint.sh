@@ -11,4 +11,4 @@ if test -e "$HOME/.ssh/id_rsa"; then
 fi
 
 
-exec /opt/bin/hook
+exec /opt/blog/hook
