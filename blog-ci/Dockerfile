@@ -21,4 +21,5 @@ COPY ./build/hook /opt/blog/hook
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
   CMD curl -fs http://localhost/health || exit 1
 
-CMD ["/opt/blog/hook"]
+COPY docker_entrypoint.sh /opt/docker_entrypoint.sh
+ENTRYPOINT ["/opt/docker_entrypoint.sh"]
