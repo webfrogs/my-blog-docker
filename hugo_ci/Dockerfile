@@ -10,7 +10,7 @@ RUN cd hook \
 
 FROM alpine:3.11.3
 RUN apk update --no-cache \
-	&& apk add --no-cache git curl openssh \
+	&& apk add --no-cache git curl openssh libc6-compat g++ \
 	&& mkdir -p /root/.ssh \
 	&& echo "Host *" > /root/.ssh/config \
 	&& echo "  StrictHostKeyChecking no" >> /root/.ssh/config
